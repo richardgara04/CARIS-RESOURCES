@@ -1,0 +1,46 @@
+﻿syntax = "proto3";
+
+option java_package = "caris.telemetry";
+option java_multiple_files = true;
+
+package telemetry;
+
+service AgentMetricsService {
+  rpc StreamMetrics (stream SystemMetrics) returns (AckResponse);
+}
+
+message SystemMetrics {
+  string server_id = 1;
+  double cpu_usage = 2;
+  double ram_usage = 3;
+  double disk_usage = 4;
+  double temperature = 5;
+  int32 active_processes = 6;
+  string timestamp = 7;
+  double network_download = 8;
+  double network_upload = 9;
+  string top_processes = 10;
+  string agent_token = 11;
+  string internal_ip = 12;
+}
+
+message AckResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+service CommandService {
+  rpc ExecuteConfig (ConfigRequest) returns (ConfigResponse);
+}
+
+message ConfigRequest {
+  string server_id = 1;     
+  string command_json = 2;   
+  string action_type = 3; 
+}
+
+message ConfigResponse {
+  bool success = 1;         
+  string message = 2;        
+  string error_details = 3;
+}
