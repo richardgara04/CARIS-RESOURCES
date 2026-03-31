@@ -47,7 +47,7 @@ mkdir -p $INSTALL_DIR
 cd $INSTALL_DIR
 
 # 3. DESCARGAR COMPONENTES (Asumiendo que están en la misma carpeta que el install.sh en GitHub)
-REPO_URL="https://github.com/richardgara04/CARIS-RESOURCES/blob/main"
+REPO_URL="https://raw.githubusercontent.com/richardgara04/CARIS-RESOURCES/main"
 wget -q $REPO_URL/agent.py -O agent.py
 wget -q $REPO_URL/telemetry.proto -O telemetry.proto
 wget -q $REPO_URL/config_dhcp.sh -O config_dhcp.sh
