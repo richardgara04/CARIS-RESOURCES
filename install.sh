@@ -31,8 +31,6 @@ echo -e   "${BLUE}               .
                                    ........   .........    ........                                                      ....       :..                                             
                                         ....     .......       . .....
 ${NC}"
-echo -e "${BLUE}    CARIS - Network Orchestrator Agent    ${NC}"
-echo -e "${BLUE}==========================================${NC}"
 
 # 1. VERIFICAR ROOT
 if [ "$EUID" -ne 0 ]; then 
@@ -55,12 +53,11 @@ wget -q $REPO_URL/config_dns.sh -O config_dns.sh
 
 # 4. SOLICITAR TOKEN
 echo -e "${BLUE}🔑 Configuración de Identidad${NC}"
-read -p "Ingresa tu Token de CARIS: " USER_TOKEN
+read -p "Ingresa tu Token de CARIS: " USER_TOKEN </dev/tty
 if [ -z "$USER_TOKEN" ]; then
     echo -e "${REDBOLD}❌ Error: El token es obligatorio para la telemetría.${NC}"
     exit 1
 fi
-
 # CREAR ENTORNO PYTHON
 python3 -m venv caris-agent
 source caris-agent/bin/activate
