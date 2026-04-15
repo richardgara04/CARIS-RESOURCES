@@ -173,7 +173,7 @@ def generate_metrics(agent_token):
             break
 
 def run_agent(token):
-    channel = grpc.insecure_channel('www.caris.website:50052') 
+    channel = grpc.insecure_channel('35.153.113.162:50052') 
     stub = telemetry_pb2_grpc.AgentMetricsServiceStub(channel)
     
     print(f"Iniciando Agente CARIS. MAC: {get_mac_address()} | IP: {get_internal_ip()}")
